@@ -6,6 +6,7 @@
 package com.conrado.luiseduardo_teste.model;
 
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 /**
@@ -16,7 +17,7 @@ public class Passageiro {
     
     private Integer idPassageiro;
     private String nome;
-    private Calendar dataNascimento;
+    private LocalDate dataNascimento;
     private String cpf;
     private String sexo;
     
@@ -24,7 +25,7 @@ public class Passageiro {
         
     }
 
-    public Passageiro(Integer idPassageiro, String nome, Calendar dataNascimento, String cpf, String sexo) {
+    public Passageiro(Integer idPassageiro, String nome, LocalDate dataNascimento, String cpf, String sexo) {
         this.idPassageiro = idPassageiro;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -48,11 +49,11 @@ public class Passageiro {
         this.nome = nome;
     }
 
-    public Calendar getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Calendar dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
     

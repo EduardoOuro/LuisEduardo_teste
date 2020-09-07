@@ -11,7 +11,6 @@ import com.conrado.luiseduardo_teste.model.Motorista;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,19 +45,25 @@ public class MSalverServlet extends HttpServlet {
         String modeloCarro = request.getParameter("motorista_modelo_carro");
         String status = request.getParameter("motorista_status");
         String sexo = request.getParameter("motorista_sexo");
-
         String dataEmTexto = request.getParameter("motorista_dataNascimento");
-        Calendar dtNascimento = null;
-
-        //FAZER A CONVERSÃO DA DATA
-        try{
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
-            dtNascimento =Calendar.getInstance();
-            dtNascimento.setTime(date);
+        
+        Date dtNascimento =null;
+//
+//        //FAZER A CONVERSÃO DA DATA
+//        try{
+//            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
+//            dtNascimento =Calendar.getInstance();
+//            dtNascimento.setTime(date);
+//        }catch (ParseException e){
+//            return;
+//        }
+        try {
+           dtNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
         }catch (ParseException e){
             return;
         }
-        
+
+
          Boolean s = false;
         if (status.equals("1")) {
             s = true;

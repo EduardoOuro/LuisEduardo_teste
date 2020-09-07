@@ -31,7 +31,8 @@ public class PassageiroDao {
             // ADICIONAR O Statement.RETURN_GENERATED_KEYS PARA RECUPERAR ID GERADO NO BD
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, passageiro.getNome());
-                stmt.setDate(2, new Date(passageiro.getDataNascimento().getTimeInMillis()));
+                stmt.setDate(2, Date.valueOf(passageiro.getDataNascimento()));
+
                 stmt.setString(3, passageiro.getCpf());
                 stmt.setString(4, passageiro.getSexo());
 
@@ -64,11 +65,12 @@ public class PassageiroDao {
                 p.setNome(rs.getString("PASSAGEIRO_NOME"));
                 p.setCpf(rs.getString("PASSAGEIRO_CPF"));
                 p.setSexo(rs.getString("PASSAGEIRO_SEXO"));
-                
-                  //POPULA A DATA DE NASCIMENTO DO PASSAGEIRO, FAZENDO CONVERSAO
-                Calendar data = Calendar.getInstance();
-                data.setTime(rs.getDate("PASSAGEIRO_DATANASCIMENTO"));
-                p.setDataNascimento(data);
+
+                p.setDataNascimento(rs.getDate("PASSAGEIRO_DATANASCIMENTO").toLocalDate()); 
+                //POPULA A DATA DE NASCIMENTO DO PASSAGEIRO, FAZENDO CONVERSAO
+//                Calendar data = Calendar.getInstance();
+//                data.setTime(rs.getDate("PASSAGEIRO_DATANASCIMENTO"));
+//                p.setDataNascimento(data);
                 
                 
                 //ADICIONA O PASSAGEIRO NA LISTA
@@ -90,10 +92,8 @@ public class PassageiroDao {
                     passageiro.setIdPassageiro(rs.getInt("PASSAGEIRO_ID"));
                     passageiro.setNome(rs.getString("PASSAGEIRO_NOME"));
                     
-                    //popula a data de nascimento do contato, fazendo a conversao
-                    Calendar data = Calendar.getInstance();
-                    data.setTime(rs.getDate("dataNascimento"));
-                    passageiro.setDataNascimento(data);
+                    passageiro.setDataNascimento(rs.getDate("PASSAGEIRO_DATANASCIMENTO").toLocalDate());
+
 
                     passageiro.setCpf(rs.getString("PASSAGEIRO_CPF"));
                     passageiro.setSexo(rs.getString("PASSAGEIRO_SEXO"));

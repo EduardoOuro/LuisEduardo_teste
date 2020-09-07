@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,20 +44,21 @@ public class PSalverServlet extends HttpServlet {
         String cpf = request.getParameter("passageiro_cpf");
         String sexo = request.getParameter("passageiro_sexo");
         String dataEmTexto = request.getParameter("passageiro_dataNascimento");
-        Calendar dtNascimento=null;
+//        Calendar dtNascimento=null;
         
         //FAZER A CONVERSÃO DA DATA
-        try{
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
-            dtNascimento =Calendar.getInstance();
-            dtNascimento.setTime(date);
-        }catch (ParseException e){
-            return;
-        }
+//        try{
+//            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
+//            dtNascimento =Calendar.getInstance();
+//            dtNascimento.setTime(date);
+//        }catch (ParseException e){
+//            return;
+//        }
         //SALVAR PASSAGEIRO
         Passageiro p = new Passageiro();
         p.setNome(p.getNome());
-        p.setDataNascimento(dtNascimento);        
+        p.setDataNascimento(p.getDataNascimento());
+        
         p.setCpf(p.getCpf());
         p.setSexo(p.getSexo());
         

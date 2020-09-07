@@ -71,7 +71,7 @@
             </tbody>
         </table>
         <a href="${pageContext.request.contextPath}/motoristas/novo" class="btn incluir">Incluir novo</a>
-        
+        <script src="angularjs/angular.min.js"></script> 
     </body>
 </html>
 

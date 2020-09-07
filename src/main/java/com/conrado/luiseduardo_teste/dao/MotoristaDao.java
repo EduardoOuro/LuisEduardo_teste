@@ -8,12 +8,11 @@ package com.conrado.luiseduardo_teste.dao;
 import com.conrado.luiseduardo_teste.jdbc.ConexaoFactory;
 import com.conrado.luiseduardo_teste.model.Motorista;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -33,7 +32,8 @@ public class MotoristaDao {
 
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, motorista.getNome());
-                stmt.setDate(2, new Date(motorista.getDataNascimento().getTimeInMillis()));
+//                stmt.setDate(2, new Date(motorista.getDataNascimento().getTime()));
+                stmt.setDate(2, new java.sql.Date(motorista.getDataNascimento().getTime()));
                 stmt.setString(3, motorista.getCpf());
                 stmt.setString(4, motorista.getModeloCarro());
                 stmt.setBoolean(5, motorista.getStatus());
@@ -68,11 +68,11 @@ public class MotoristaDao {
                 m.setModeloCarro(rs.getString("MOTORISTA_MODELO_CARRO"));
                 m.setStatus(rs.getBoolean("MOTORISTA_STATUS"));
                 m.setSexo(rs.getString("MOTORISTA_SEXO"));
-                
+                m.setDataNascimento(rs.getDate("MOTORISTA_DATANASCIMENTO"));
                 //POPULA A DATA DE NASCIMENTO DO MOTORISTA, FAZENDO CONVERSAO
-                Calendar data = Calendar.getInstance();
-                data.setTime(rs.getDate("MOTORISTA_DATANASCIMENTO"));
-                m.setDataNascimento(data);
+//                Calendar data = Calendar.getInstance();
+//                data.setTime(rs.getDate("MOTORISTA_DATANASCIMENTO"));
+//                m.setDataNascimento(data);
                 
                 //ADICIONA O MOTORISTA NA LISTA
                 motoristas.add(m);
@@ -120,10 +120,10 @@ public class MotoristaDao {
                     m.setIdMotorista(rs.getInt("motorista_id"));
                     m.setNome(rs.getString("motorista_nome"));
                     
-                    Calendar data = Calendar.getInstance();
-                    data.setTime(rs.getDate("dataNascimento"));
-                    m.setDataNascimento(data);
-                    
+//                    Calendar data = Calendar.getInstance();
+//                    data.setTime(rs.getDate("dataNascimento"));
+//                    m.setDataNascimento(data);
+                    m.setDataNascimento(rs.getDate("motorista_dataNascimento"));
                     m.setModeloCarro(rs.getString("motorista_modeloCarro"));
                     m.setStatus(rs.getBoolean("motorista_status"));
                     m.setCpf(rs.getString("motorista_cpf"));

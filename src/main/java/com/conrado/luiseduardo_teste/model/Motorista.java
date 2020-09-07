@@ -5,8 +5,8 @@
  */
 package com.conrado.luiseduardo_teste.model;
 
-import java.time.LocalDate;
-import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  *
@@ -16,7 +16,7 @@ public class Motorista {
     
     private Integer idMotorista;
     private String nome;
-    private Calendar dataNascimento;
+    private Date dataNascimento;
     private String cpf;
     private String modeloCarro;
     private Boolean status;
@@ -26,7 +26,7 @@ public class Motorista {
         
     }
 
-    public Motorista(Integer idMotorista, String nome, Calendar dataNascimento, String cpf, String modeloCarro, Boolean status, String sexo) {
+    public Motorista(Integer idMotorista, String nome, Date dataNascimento, String cpf, String modeloCarro, Boolean status, String sexo) {
         this.idMotorista = idMotorista;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -52,11 +52,11 @@ public class Motorista {
         this.nome = nome;
     }
 
-    public Calendar getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Calendar dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
